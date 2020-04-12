@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".MainActivity">
+
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_user_desc"
+    android:hint="请输入用户描述信息"
+    android:contentDescription="用户描述信息"
+    />
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_user_phone_number"
+    android:hint="输入用户电话号码"
+    android:contentDescription="用户电话号码"
+    />
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_user_company_id"
+    android:hint="用户公司id"
+    android:contentDescription="用户公司id"
+    />
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btn_save_userinfo"
+    android:text="存储用户信息"
+    />
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_company_id"
+    android:hint="公司id"
+    />
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_company_bussiness"
+    android:hint="请输入公司业务"
+    android:contentDescription="公司业务"
+    />
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/et_company_address"
+    android:hint="请输入公司地址"
+    android:contentDescription="请输入公司地址"
+    />
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btn_save_company"
+    android:text="保存公司信息"
+    />
+</LinearLayout>
