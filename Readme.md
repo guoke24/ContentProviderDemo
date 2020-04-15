@@ -20,9 +20,9 @@ Providertest2 是服务端角色，内部有 ContentProvider 的实现；
 
 Providertest2_client 是客户端的角色，内部有访问 ContentProvider 的实现；
 
-具体代码的注视都比较清楚，这里小结一下要点：
+具体代码的注释都比较清楚，这里小结一下要点：
 - ContentProvider 端
-    - 明白 ContentProvider 的子类要重写的六个函数在 ContentProvider 框架角度下的意义
+    - 关注 ContentProvider 的子类要重写的六个函数在 ContentProvider 框架角度下的意义
     - AndroidManifest.xml 注册 ContentProvider 时各个属性的意义，
         - 其他程序通过 uri 在此处找寻匹配 ContentProvider
     - URI 的语法结构和 UriMatcher 的使用
@@ -36,16 +36,15 @@ Providertest2_client 是客户端的角色，内部有访问 ContentProvider 的
 
 ## 设计思路
 
-ContentProvider 作为 四大组件之一，其作用是封装好统一的接口提供给外部，让外部可以通过同意的接口访问某一种类型的数据集。
+ContentProvider 作为 四大组件之一，其作用是封装好统一的接口提供给外部，让外部可以通过统一的接口访问某一种类型的数据集。
 
-内部的数据存储的实现，跟外部隔离。
+其内部的数据存储的实现，跟外部隔离。
 
-ContentProvider 其实是一个框架，其使用方法属于拓展类套路。
+ContentProvider 算是一个框架，其使用方法属于拓展类套路。
 其派生类需要重写6个函数：
-初始化函数 onCreate，绑定数据源；
-增删改查四个函数，统一的数据操作接口；
+onCreate，做一些初始化工作，类似绑定数据源等；
+增删改查四个函数，统一的数据操作接口提供给外部访问；
 类型判断函数 getType，判断某个uri的类型；
-其中，增删改查四个函数是提供给外部的接口！
 
 外部通过 ContentResolver 来访问某个 ContentProvider，方式：
 
@@ -53,7 +52,7 @@ ContentProvider 其实是一个框架，其使用方法属于拓展类套路。
 getContext().getContentResolver().insert( uri，ContentValue )
 ```
 
-Uri 会指定某个具体的 ContentProvider，通过 ContentProvider 程序的 AndroidManifest.xml 清单文件确定是否匹配，然后该 ContentProvider 的 insert 函数会被调用，在函数内部，借用 UriMatcher 类解析 uri 并执行相应的操作。
+Uri 会指定某个具体的 ContentProvider，通过 ContentProvider 所在程序的 AndroidManifest.xml 文件确定是否匹配，然后该 ContentProvider 的 insert 函数会被调用，在 insert 函数内部，利用 UriMatcher 类解析 uri 并执行相应的操作。
 
 Uri 的匹配解析，有一套规则。
 
